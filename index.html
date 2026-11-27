@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJA's Store</title>
+    <link rel="icon" type="image/png" href="image\aja.JPG">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>🛒 AJA's Store</h1>
+        <p>Facilite tes paiements en passant par momo</p>
+    </header>
+
+    <main class="container">
+      <!-- Vue 1 : Accueil avec les cartes de catégories -->
+        <section id="categoriesView">
+            <h1 class="section-title"> Catégorie</h1>
+            <div class="categories-grid" id="categoriesGrid">
+                <!-- Généré par js/catalog.js -->
+            </div>
+        </section>
+
+        <!-- Vue 2 : Catalogue de la catégorie sélectionnée (masqué au démarrage) -->
+         <section id="catalogView" style="display: none;">
+            <button type="button" class="btn-back" id="backToCategoriesBtn">← Retour</button>
+            <h2 id="currentCategoryTitle"></h2>
+
+            <!-- Grille des sous-catégories (jeux, services TV, musique...) -->
+            <div id="subcategoriesGrid" class="categories-grid" style="display: none;"></div>
+
+            <!-- Grille des produits -->
+            <div id="catalog" class="catalog-grid"></div>
+        </section>
+    </main>
+
+    <!-- Fenêtre de commande et paiement -->
+    <div class="modal-overlay" id="orderModal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModalBtn" aria-label="Fermer">&times;</button>
+            <h3>Finaliser la commande</h3>
+
+            <div class="order-summary">
+                <div class="summary-label">Produit sélectionné :</div>
+                <div id="modalProductName" class="summary-name"></div>
+                <div id="modalProductPrice" class="summary-price"></div>
+            </div>
+
+            <!-- Section Paiement Mobile Money -->
+            <div class="momo-box">
+                <h4>📱 Paiement Mobile Money (MTN)</h4>
+                <p>Effectuez le dépôt du montant exact sur le numéro marchand ci-dessous :</p>
+                <div class="number-copy">
+                    <span id="merchantDisplayNumber">+242 06 945 37 74</span>
+                    <button type="button" class="btn-small" id="copyNumberBtn">Copier</button>
+                </div>
+                <a href="tel:*105%23" class="btn-ussd">📲 Lancer le menu MTN MoMo (*105#)</a>
+            </div>
+
+            <!-- Formulaire client -->
+            <form id="checkoutForm">
+                <div class="form-group">
+                    <label for="clientName">Votre Nom Mobile money () </label>
+                    <input type="text" id="clientName" placeholder="Ex: Jordi AMONA" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="clientPhone">Votre numéro Mobile Money (celui qui a payé) </label>
+                    <input type="tel" id="clientPhone" placeholder="Ex: 06 XXX XX XX" required>
+                </div>
+                <div id="dynamicCategoryFields" class="dynamic-fields">
+    <!-- 2 champs générés automatiquement selon la catégorie du produit -->
+</div>
+
+                
+
+                <button type="submit" class="btn-whatsapp">
+                    ✅ Valider & Envoyer sur WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Chargement des scripts dans l'ordre de dépendance -->
+    <script src="js/config.js"></script>
+    <script src="js/catalog.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>
