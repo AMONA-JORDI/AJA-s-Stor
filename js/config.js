@@ -1,5 +1,5 @@
 const CONFIG = {
-    vendeurWhatsApp: "242069453774",
+    vendeurWhatsApp: "069453774",
     numeroAffichage: "+242 06 945 37 74",
     numeroCopie: "069453774",
     devise: "FCFA"
